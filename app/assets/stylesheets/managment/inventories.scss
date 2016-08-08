@@ -1,0 +1,56 @@
+// Place all the styles related to the Inventories controller here.
+// They will automatically be included in app_managment.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.gorizontal {
+ margin-top: -50px;
+}
+
+.table-inverse {
+  background-color: dodgerblue;
+}
+.del-button {
+  margin-top: 36px;
+}
+.circle {
+  margin-right: 100px;
+  display: inline-block;
+  border-left-color: #a0d3e8;
+  border-bottom-color: #0a0045;
+  border-right-color: #00b3ee;
+  border-top-color: #0000FF;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+
+  box-shadow: 0 3px 20px rgba(0,0,0,.25),
+  inset 0 2px 0 rgba(255,255,255,.6),
+  0 2px 0 rgba(0,0,0,.1),
+  inset 0 0 20px rgba(0,0,0,.1);
+}
+.circle-mini {
+  margin-right: 100px;
+  display: inline-block;
+  width: 37px;
+  height: 37px;
+  cursor: pointer;
+  border-radius: 50%;
+;
+}
+
+.btn-add {
+  background: url(http://www.defaulticon.com/images/icons32x32/add.png?itok=sIL2bSuC) center center no-repeat;
+}
+.btn-delete {
+  background: url(http://www.defaulticon.com/images/icons32x32/delete.png?itok=zIkyZPyc) center center no-repeat;
+}
+
+.visible-button {
+  visibility: collapse;
+}
+.visible-buttonn {
+  visibility: visible;
+}

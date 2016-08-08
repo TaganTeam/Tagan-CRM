@@ -1,0 +1,9 @@
+<%unless @user.birthday == nil%>
+<%arr = @user.city_of_residence.split(/, /)%>
+<%results = Geocoder.search("@#{arr[0]}, @#{arr[1]}")%>
+<%lng = results[0].data["geometry"]["location"]["lng"]%>
+<%lat = results[0].data["geometry"]["location"]["lat"]%>
+
+
+<a href="#" onclick="openMap(<%=lat%>,<%=lng%>)" ><%=@user.city_of_residence%></a>
+<%end%>

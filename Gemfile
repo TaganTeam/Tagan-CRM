@@ -40,7 +40,12 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   # gem 'web-console', '~> 2.0'
-
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+  gem 'capistrano-local-precompile', require: false
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
@@ -49,6 +54,7 @@ group :production, :staging do
   gem 'heroku_rails_deflate'
   gem 'rails_12factor'
   gem 'sprockets', '>= 3.0.0'
+  gem 'sprockets-rails', '~> 2'
   gem 'sprockets-es6'
 end
 
@@ -72,3 +78,18 @@ gem 'angular-rails-templates'
 gem 'faye-rails', '~> 2.0'
 
 gem 'thin'
+
+gem 'rspec-rails', '~> 3.5.0'
+gem "factory_girl_rails", "~> 4.0"
+gem 'shoulda-matchers', '~> 2.4'
+gem 'capybara'
+gem 'database_cleaner'
+gem 'active_admin_datetimepicker'
+gem 'bootstrap-sass'
+gem 'geocoder'
+
+gem 'puma'
+gem 'capistrano-npm'
+gem 'capistrano-bower'
+gem 'newrelic_rpm'
+gem 'carrierwave'

@@ -11,6 +11,7 @@ angular
             $urlRouterProvider) {
             $locationProvider.html5Mode(true);
             $urlRouterProvider.otherwise('/');
+            
 
             $stateProvider
                 .state('worktime', {

@@ -1,0 +1,35 @@
+.btn-group{"aria-label" => "...", :role => "group"}
+  %a.btn.circle.btn-add{:onclick => 'addInventories()'}
+%div.container.gorizontal
+  %div.row
+    .col-md-11
+      %table#inventories-list.table.table-bordered.table-hover
+        %thead.table-inverse
+          %tr
+            %th id
+            %th Type
+            %th Part number
+            %th Receipt date
+            %th Image
+            %th User id
+        %tbody.inventory
+          - @inventories.each do |item|
+            %tr.link_to{:href=> managment_inventory_path(item.id)}
+              %th{:scope => "row"}
+                = item.id
+                %td= @typedList[item.type_id]
+                %td= item.inventory_id
+                %td= item.receipt_date
+                %td= item.avatar
+                %td= item.user_id
+    .col-md-1
+      %table.del-button#lineLink
+        %thead
+          %tr
+            %th
+        %tbody
+          - @inventories.each do |btn|
+            %tr.visible-button#delButton
+              %td.link_to.circle-mini.btn-delete{:href=> managment_inventory_path(btn.id)}
+=render :template => '/managment/inventories/show'
+=render template: 'managment/inventories/new'

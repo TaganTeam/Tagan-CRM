@@ -1,0 +1,26 @@
+.btn-group{"aria-label" => "...", :role => "group"}
+  %a.btn.circle.btn-add{:onclick => 'addInventories()'}
+%div.container
+  %div.row
+    %table.table.table-bordered.col-md-12.table-hover.gorizontal
+      %thead.table-inverse
+        %tr
+          %th #
+          %th Title
+          %th Quantity
+          %th Amount of free
+      %tbody
+        - i = 0
+        - @groupedList.each do |key|
+          %tr
+            %th{:scope => "row"}
+              = i += 1
+              %td= key
+              %td= @counts[key]
+              %td= @countsfree[key]
+
+
+
+
+
+= render template: "managment/inventories/new"

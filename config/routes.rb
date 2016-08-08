@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+
+
+
   mount API::Base => '/api'
   mount GrapeSwaggerRails::Engine => '/apidoc'
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-
+  # namespace :admin do
+  #   resources :admin_user # Have the admin manage them here.
+  # end
   root to: 'application#show'
 
   def shared_devise_path
@@ -23,7 +26,15 @@ Rails.application.routes.draw do
                  sessions: 'access/sessions',
              }
 
+  ActiveAdmin.routes(self)
+
   get '/login', to: 'auth#login'
+  get '/managment/inventories/all', to: 'managment/inventories#all'
+  namespace :managment do
+    resources :inventories, :types
+  end
+  match '/managment/inventories/upload', to: 'managment/inventories#upload', via: :post
 
   get '/*path' => 'auth#redirect'
+
 end

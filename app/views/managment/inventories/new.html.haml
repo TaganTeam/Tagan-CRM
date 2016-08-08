@@ -1,0 +1,51 @@
+.modal.fade#inventoriesmodal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "inventoriesmodal", :type => "button"} ×
+        %h4.modal-title New nventory or Edit inventory
+      .modal-body
+        %form.form-horizontal#inv_form
+          .form-group
+            %label Type
+            %br/
+            = collection_select(:inventory, :type_id, Type.all, :id, :name, :prompt => 'Please select inventory type')
+            %a.btn{:onclick => 'addType()'} Add new type
+            %br/
+          .form-group
+            %label Part number
+            %br/
+            %input.form-control{:name => "inventory[inventory_id]", :placeholder => "Part number", :type => "integer"}
+            %br/
+          .form-group
+            %label Receipt date
+            %br/
+            %input.form-control{:name => "inventory[receipt_date]", :placeholder => "Receipt date", :type => "date"}
+            %br/
+          .form-group
+            %label Count inventories
+            %br/
+            %input{:min => "1", :id => "count_inv",name: :count_inv,:type => "integer", :value => "1"}
+            %br/
+          .form-group
+            %label Image
+            %br/
+            %input.form-control{:id=> 'add_img',:name=> "inventory[avatar]", :type=> 'file', :accept=>".txt,image/*"}
+            %button{:id=> 'upload_button'} Upload
+            %br/
+          .modal-footer
+            %button.btn.btn-success.btn-lg{id: :createInventories} Save
+
+
+
+.modal.fade#typemodal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "typemodal", :type => "button"} ×
+        %h4.modal-title Add new inventory type
+      .modal-body
+        %label Enter new type
+        %input.form-control{id: :types_v, :name => "type[name]", :placeholder => "Type name", :type => "string"}/
+      .modal-footer
+        %button.btn.btn-success.btn-lg{id: :createType} Save

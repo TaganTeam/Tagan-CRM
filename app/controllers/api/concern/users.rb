@@ -52,7 +52,10 @@ module API
         delete ':id' do
           begin
             user = User.find_by_id params[:id]
+            technologies = Technology.find_by_user_id(params[:id])
+            technologies.delete
             user.destroy
+
             success! user.as_api_response(:basic), 200
           rescue => e
             throw_error! 403, e.class.to_s, e.message

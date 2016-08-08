@@ -1,5 +1,6 @@
 class Access::SessionsController < Devise::SessionsController
   skip_before_action :auth_user!
+
   layout 'auth'
   skip_filter *_process_action_callbacks.map(&:filter)
   prepend_before_filter :allow_params_authentication!, only: :create
@@ -25,8 +26,13 @@ class Access::SessionsController < Devise::SessionsController
           sign_in_count:   (resource.sign_in_count.to_i + 1)
       }
 
-      resource.update_columns(sign_in_attributes)
-      respond_with resource, location: signed_in_root_path(resource)
+        resource.update_columns(sign_in_attributes)
+      if current_user.admin
+        redirect_to "/admin"
+      else
+        respond_with resource, location: signed_in_root_path(resource)
+      end
+        # resource.admin?redirect_to admin_path: redirect_to root_path
     end
   end
 

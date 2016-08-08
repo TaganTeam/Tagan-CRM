@@ -8,10 +8,46 @@
 // $sidebar-width: 242px;
 
 // Active Admin's got SASS!
+@import "bootstrap-sprockets";
+@import "bootstrap";
 @import "active_admin/mixins";
 @import "active_admin/base";
+
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+.modal-dialog {
+  height: 70% !important;
+  padding-top:10%;
+}
+
+.modal-content {
+  height: 100% !important;
+  overflow:visible;
+}
+
+.modal-body {
+  height: 70%;
+  overflow: auto;
+}
+
+h1,h2 {
+  color: #000000;
+}
+
+.label {
+  color: #000000;
+  font-size: 12px;
+  text-align: left;
+}
+
+form input[type=date] {
+  width: 150px;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}

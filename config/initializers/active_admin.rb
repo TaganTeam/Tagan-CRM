@@ -4,8 +4,10 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.skip_before_filter :authenticate_user!
-  config.skip_before_filter :auth_user!
+  # config.skip_before_filter :authenticate_user!
+  # config.skip_before_filter :auth_user!
+  config.before_filter :authenticate_admin_user!
+  config.before_filter :current_admin_user
 
   config.site_title = "Tracking Time"
 
@@ -101,14 +103,14 @@ ActiveAdmin.setup do |config|
   # will call the method to return the path.
   #
   # Default:
-  config.logout_link_path = :destroy_admin_user_session_path
+  config.logout_link_path = :destroy_user_session_path
 
   # This setting changes the http method used when rendering the
   # link. For example :get, :delete, :put, etc..
   #
   # Default:
   # config.logout_link_method = :get
-
+  config.logout_link_method = :delete
   # == Root
   #
   # Set the action to call for the root path. You can set different
@@ -132,7 +134,7 @@ ActiveAdmin.setup do |config|
   # config.comments_order = 'created_at ASC'
   #
   # You can disable the menu item for the comments index page:
-  # config.comments_menu = false
+  config.comments_menu = false
   #
   # You can customize the comment menu:
   # config.comments_menu = { parent: 'Admin', priority: 1 }

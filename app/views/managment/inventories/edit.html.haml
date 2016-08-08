@@ -1,0 +1,33 @@
+%form.form-horizontal.edit_form
+  .form-group
+    %label Id
+    %br/
+    %textarea.form-control{:id=> 'edit_id',:name => "inventory[type_id]", :type => "integer"}
+    %br/
+  .form-group
+    %label Type
+    %br/
+    = collection_select(:inventory, :type_id, Type.all, :id, :name, :prompt => 'Please select inventory type')
+    %a.btn{:onclick => 'addType()'} Add new type
+    %br/
+  .form-group
+    %label Part number
+    %br/
+    %textarea.form-control{:id=> 'edit_part',:name => "inventory[part_number]", :type => "integer"}
+    %br/
+  .form-group
+    %label Receipt date
+    %br/
+    %input.form-control{id: :receipt_id,:name => "inventory[receipt_date]", :type => "date"}/
+    %br/
+  .form-group
+    %label Image
+    %br/
+    %textarea.form-control{:id=> 'edit_img',:name => "inventory[avatar]", :type => "integer"}
+    %br/
+  .form-group
+    %label Username
+    %br/
+    = collection_select(:inventory, :user_id, User.all, :id, :full_name, :prompt => 'Please select User')
+    %a.btn{:onclick => 'addType()'} Add new type
+    %br/
